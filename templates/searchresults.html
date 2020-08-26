@@ -1,0 +1,42 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+Critique
+{% endblock %}
+
+{% block user %}
+{{ username }}
+{% endblock %}
+
+
+{% block body %}
+<div id="maindisplayblock" style="height: 100%; padding: 5px; margin-left: 5%; margin-right: 5%;">
+    <div id="resultsearch" style=" margin-top: 5%; margin-left: 5%; width: 450px; height: 400px;">
+        <h1  id = "mainresulttitle" class="title" style="font-size: 100px;"> Critique </h1>
+        <form action="{{url_for('booksearch') }}" method ="POST">  
+            <div class="form-group">
+                <label for="searchinput" style="padding: 5px; font-size: 20px;">Find reviews:</label>
+                <input type="text" name = "searchrequest" class="form-control search" id="searchinput" aria-describedby="emailHelp" placeholder="Find reviews by ISBN,title, or author">
+            </div>
+            <button type="submit" class="btn btn-primary" id="usersubmit" >Search</button>
+        </form>
+    </div>
+    <div id ="searchresults" style=" margin-top: -400px; margin-left: 50%; width: 600px; height: 200px;">
+    <br>    
+    <h3 id="resultheading"> Search results for search containing : <strong> "{{ userreq }}" </strong>!! </h3>
+    <br>
+        {% for book in booksfound %}
+            <div class = "aresult" style="width: 100%; ">
+                <a href="{{ url_for('bookinformation', book_id=book.isbn) }}" style="padding: 10px;font-size: 20px; color: #000000;">
+                    {{ book.title }} by {{ book.author}}.
+                </a>
+                <br>
+            </div>    
+        {% else %}
+            <h3> No results found.</h3>
+
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

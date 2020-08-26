@@ -1,0 +1,20 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+Review Delete
+{% endblock %}
+
+{% block user %}
+
+{{ username }}
+
+{% endblock %}
+
+{% block body %}
+<div class ="displayblock">
+    <h3 id="headlinedelete" class="aheadline"> Your review has been deleted :) !</h1>
+    
+    <h6 id = "deletesubline" class = "asubline"> <a href= "{{ url_for('bookinformation', book_id = book) }}"> return </a></h6>
+
+</div> 
+{% endblock %}

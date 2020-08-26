@@ -1,0 +1,14 @@
+{% extends "logreglayout.html" %}
+
+{% block title %}
+Success 
+{% endblock %}
+
+{% block body %}
+<div class ="displayblock" id="registersuccsess" >
+
+    <h3 id="successheadline" class="headline" style="text-align: center; padding-top: 3px;"> Congrats {{ reguser }} , you are now a member of Critique!</h1>
+    <h6 id = "successregister" class = "subline" style="text-align: center; margin-top: 10%;"> Login into account  <a href= "{{ url_for('Login') }}"> here </a></h6>
+
+</div> 
+{% endblock %}

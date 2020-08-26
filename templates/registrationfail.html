@@ -1,0 +1,14 @@
+{% extends "logreglayout.html" %}
+
+{% block title %}
+Registration error 
+{% endblock %}
+
+{% block body %}
+<div id = "registerfailblock" class="displayblock">
+
+    <h1 id = "regheadline" class="failheadline"> Looks like you have an existing account!! </h1>
+    <h6 id = "gotologin" class = "failsubline"> Try signing in <a href = "{{ url_for('Login') }}"> here </a></h6>
+
+</div> 
+{% endblock %}

@@ -1,0 +1,64 @@
+
+#signinhome{
+
+  border-radius: 15px;
+  border: 1px solid #3260a8;
+  border-radius: 15px;
+  padding: 8px; 
+  margin-top: 7px;
+
+}
+
+#signinhome:hover{
+  background-color: #bedbf7;
+  color: #000000;
+}
+
+
+
+#mainregformblock{
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px#3260a8;
+    height: 425px;
+    width: 450px;
+    position: fixed;
+    top: 20%;
+    left: 60%;
+}
+
+.displayblock {
+  background-color: #ffffff;
+  box-shadow: 5px 5px 5px#3260a8;
+  width: 450px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -225px;
+}
+
+#loginformblock{
+  height: 380px;
+  margin-top: -180px;
+}
+  
+#regformblock{
+  height: 420px;
+  margin-top: -210px;
+
+}
+
+#loginfailblock, #registerfailblock , #loginwrongpassword, #registersuccsess{
+  height: 270px;
+  margin-top: -150px;
+
+}
+
+.failheadline {
+  text-align: center;
+  padding-top: 3px;
+}
+
+.failsubline{
+  text-align: center; 
+  margin-top: 10%;
+}

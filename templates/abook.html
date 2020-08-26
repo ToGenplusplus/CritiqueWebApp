@@ -1,0 +1,86 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+{{  bookinfo.title }}
+{% endblock %}
+
+{% block user %}
+{{ usr }}
+{% endblock %}
+
+{% block body %}
+
+<div id="abookdisplayblock">
+    <label class = "booklabels" style="font-size: 30px; margin-left: 55%;"><strong>Reviews: </strong>  </label> <br>
+    <div id = "bookresultsinfo" style =" width: 600px; height: 450px; padding: 20px; margin-left: 10%; margin-top: 5px;">
+        <h2 id="headbooktitle" style="border-bottom: 1px solid #3260a8; padding: 10px; width: 530px;"> {{ bookinfo.title }}</h2><br>
+        <label class = "booklabels" ><strong>Author: </strong>  {{ bookinfo.author }} </label><br>
+        <label class = "booklabels" ><strong>ISBN: </strong> {{ bookinfo.isbn }} </label><br>
+        <label class = "booklabels" ><strong>Year published: </strong>  {{ bookinfo.published }}</label><br>
+        <label class = "booklabels" id="goodreadslabel"> <strong>Goodreads ratings: </strong> </label><br>
+        
+        <div id= "goodreadsinfo" style = " width: 400px; height: 100px; padding: 10px;">
+            <label class = "goodreadlabels">Number of ratings: {{ ratingsnumber if ratingsnumber != None else 'N/A' }}</label>
+            <label class = "goodreadlabels">Average rating: {{ average if average != None else 'N/A' }}</label>
+        </div>
+    </div>
+        <div id="reviewsblock" style=" width: 600px; height: 530px; margin-left: 55%; margin-top: -460px; overflow: auto;">
+            {% for review in reviewinfo %}
+                {% if usr == review.userid %}
+                    <div class = " rev userreviews">
+                        <a class = "editlinks" href="{{ url_for('reviewEdit', book_id = bookinfo.isbn, user_id = usr) }}"> Edit</a>
+                        <button type="button" class=" revdel btn btn-link" onclick="displayArea('Deletebookrev')"  style="float: right;">Delete review</button>
+                        <div id="Deletebookrev" style = "display: none;">
+                            <h6>Are you sure you want to delete this review?</h6><a class="delete" href="{{ url_for('reviewDelete', book_id = bookinfo.isbn, user_id = usr) }}"> Delete </a>
+                        </div>
+                        <br>
+                        <label> <strong>Critic:  </strong>  {{ usr }} </label><br>
+                        <label> <strong>Book: </strong>  {{ bookinfo.title }} by {{ bookinfo.author}}. </label><br>
+                        <label> <strong>Rating: </strong> {{ review.rating }}</label><br>
+                        <p class = "reviewtext"> {{ review.text if review.text != None else ' ' }}</p>
+                        <br>
+                    </div>
+                {% else %}
+                    <div class = "rev nonuserreviews" >
+                        <label> <strong>Critic:  </strong>: {{ review.userid }} </label><br>
+                        <label> <strong>Book: </strong>  {{ bookinfo.title }} by {{ bookinfo.author}}. </label><br>
+                        <label> <strong>Rating: </strong> {{ review.rating }}</label><br>
+                        <p class = "reviewtext"> {{ review.text if review.text != None else ' '}}</p>
+                    </div>
+                {% endif %}
+    
+            {% else %}
+                <h3> No reviews have been submitted for this book yet!! </h3>
+                <br>
+                <br>
+                <h6>Have you read this book? Let others know by leaving a review.</h6>
+                <br>
+            {% endfor %}
+            {% if not usrhasreview %}
+            <button type="button" class="btn btn-primary" onclick="displayArea('reviewsubmit')" style="margin: 8px;"> leave a review</button>
+                <!--folowing div should be hidden until areview button is clicked-->
+                <div id="reviewsubmit" style="display: none;">
+                    <form action="{{url_for('reviewSubmit', book_id=bookinfo.isbn, user_id=usr) }}" method ="POST">  
+                        <div class="form-group">
+                            <label for="reviewrating">Rating</label>
+                            <select class="form-control" name="reviewrating" required>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="reviewtextbox"> Opinion? (optional) :</label>
+                            <textarea name = "textsubmitted" class="form-control" id="reviewtextbox" rows="3" maxlength="500" onKeyPress="return taLimit(this)" onKeyUp="return taCount(this,'myCounter')"></textarea>
+                            <label>500 character limit. <B>(<SPAN id=myCounter>500</SPAN>)</B></label>
+                          </div>
+                        <button type="submit" class="btn btn-primary submitreview">Submit</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>    
+</div>
+
+{% endblock %}

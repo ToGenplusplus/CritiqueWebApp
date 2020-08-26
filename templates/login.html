@@ -1,0 +1,26 @@
+{% extends "logreglayout.html" %}
+
+{% block title %}
+Sign in
+{% endblock %}
+
+{% block body %}
+
+<div id="loginformblock" class = "displayblock">
+  <form action="{{ url_for('Login') }}" method='POST'>
+    <div class="form-group">
+      <label for="usrname" style="padding: 5px;"> Username:</label>
+      <input type="text" name = "usrname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" style="width: 95%;"required>
+    </div>
+
+    <div class="form-group">
+      <label for="passwrd" style="padding: 5px;">Password:</label>
+      <input type="password" name="passwrd" class="form-control" id="exampleInputPassword1" placeholder="Password" style="width: 95%;"required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary submitbuttons" style="width: 200px; margin-left: 27%; margin-top: 8%; padding: 5px;">Login</button>
+  </form>
+  <h6 id = "registerforaccount" class = "subline" style="text-align: center; padding-top: 3px;"> Don't have an account? Make one <a href= "{{ url_for('Register') }}"> here </a></h6>
+</div>
+
+{% endblock %}

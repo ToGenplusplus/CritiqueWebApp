@@ -1,0 +1,25 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+Review Submit
+{% endblock %}
+
+{% block user %}
+
+{{ username }}
+
+{% endblock %}
+
+{% block body %}
+<div class ="displayblock">
+    {% if success %}
+        <h3 class="aheadline"> Review has been submitted :) !</h1>
+    
+        <h6 class = "asubline"> <a  href= "{{ url_for('bookinformation', book_id = book) }}"> return </a></h6>
+    {% else %}
+        <h3 class="aheadline"> Looks like you have already submitted a review for this title!</h1>
+    
+        <h6 class = "asubline"> You can edit your review at <a href= "{{ url_for('usereviews') }}"> My reviews </a></h6>
+    {% endif %}
+</div> 
+{% endblock %}

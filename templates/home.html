@@ -1,0 +1,25 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+Critique
+{% endblock %}
+
+{% block user %}
+{{ user }}
+{% endblock %}
+
+
+{% block body %}
+<div id="maindisplayblock" style=" background-color: #ffffff; position: fixed; width: 650px; height: 500px; top: 50%; left: 50%; margin-top: -250px; margin-left: -325px;">
+
+    <h1  id = "maintitle" class="title" style=" font-size:90px; padding: 10px; text-align: center;"> Critique </h1>
+    <form action="{{url_for('booksearch') }}" method ="POST">  
+        <div class="form-group">
+          <label for="searchinput">Find reviews:</label>
+          <input type="text" name = "searchrequest" class="form-control search" id="searchinput" aria-describedby="emailHelp" placeholder="Find reviews by ISBN,title, or author">
+        </div>
+        <button type="submit" class="btn btn-primary" id="usersubmit">Search</button>
+    </form>
+
+</div>
+{% endblock %}

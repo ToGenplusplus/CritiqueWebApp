@@ -1,0 +1,28 @@
+{% extends "logreglayout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block body %}
+<div id="regformblock" class = "displayblock">
+  <label id = "errorMessage"> </label>
+  <form name = "regform" action="{{ url_for('Register') }}" onsubmit="return validateRegForm()" method="POST">
+      <div class="form-group">
+        <label for="usrnamecreate"> Create Username:</label>
+        <input type="text" name = "usrnamecreate" class="form-control" id="usernamecreate" aria-describedby="emailHelp" placeholder="Enter username" style="width: 95%;" required>
+      </div>
+      <div class="form-group">
+        <label for="passwrdcreate">Create Password:</label>
+        <input type="password" name="passwrdcreate" class="form-control" id="passwrdcreate" placeholder="Password" style="width: 95%;"  required>
+      </div>
+      <div class="form-group">
+          <label for="passwrdconfirm">Confirm Password:</label>
+          <input type="password" name="passwrdconfirm" class="form-control" id="passwrdconfirm" placeholder="Password" style="width: 95%;"  required>
+      </div>
+      <button type="submit" class="btn btn-primary submitbuttons" style="width: 200px; margin-left: 27%; margin-top: 8%; padding: 5px;">Register</button>
+    </form>
+    <h6 id = "signintoaccount" class = "subline" style="text-align: center; padding-top: 3px;"> Already have an account? Sign in <a href="{{ url_for('Login') }}"> here </a></h6>
+
+</div>
+{% endblock %}

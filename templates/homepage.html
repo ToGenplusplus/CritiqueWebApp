@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href = "{{ url_for('static', filename='stylesheets/stylesheet.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="/static/scripts/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <title> Critique</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg topnav">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                   <a id= "signinhome" href="{{ url_for('Login') }}" style="color: #3260a8; border: 1px solid #3260a8; padding: 8px; border-radius: 15px; margin: 5px;">Sign in</a> 
+                </li>
+                </ul>
+            </div>
+        </nav>
+        <!--
+        <div class="topnav" style= "background-color: #ffffff; overflow: hidden; position: fixed; border-radius: 3px; margin:5px">
+            <a href="{{ url_for('Login') }}" style="color: #3260a8; border: 1px solid #3260a8; padding: 8px; border-radius: 15px; text-align: right; float: right;">Sign in</a> 
+        </div>
+        -->
+        <div id="titleblock" style=" background-color: #ffffff; position: fixed; width: 650px; height: 500px; top: 15%; left: 0%;">
+
+            <h1 id="hometitle" class = "title" style=" font-size:120px; padding: 10px; margin-top: 20%; margin-left: 10%;"> Critique </h1>
+            <div style="border-bottom: 1px solid #3260a8; margin-left: 2%; padding: 6px; width: 90%;"></div>
+            <h4 id="homesubtitle" class = "subtitle" style="padding: 5px; margin-left: 22%;">  <i>Community for book lovers </i> </h4>
+        
+        </div>
+
+        <div id="mainregformblock">
+            <label id = "errorMessage"> </label>
+            <form id= "regform" name = "regform" action="{{ url_for('Register') }}" onsubmit="return validateRegForm()" method="POST">
+                <div class="form-group">
+                  <label for="usrnamecreate"> <strong>Username</strong></label>
+                  <input type="text" name = "usrnamecreate" class="form-control" id="usrnamecreate" aria-describedby="emailHelp" placeholder="Enter username" style="width: 95%;" required>
+                </div>
+                <div class="form-group">
+                  <label for="passwrdcreate"><strong>Password</strong></label>
+                  <input type="password" name="passwrdcreate" class="form-control" id="passwrdcreate" placeholder="Password" style="width: 95%;" required>
+                </div>
+                <div class="form-group">
+                    <label for="passwrdconfirm"><strong>Confirm Password</strong></label>
+                    <input type="password" name="passwrdconfirm" class="form-control" id="passwrdconfirm" required style="width: 95%;">
+                </div>
+                <p id="password-err"></p>
+                <button type="submit" class="btn btn-primary submitbuttons" id = "regbutton" style="width: 200px; margin-left: 27%; margin-top: 8%;">Sign up</button>
+              </form>
+          </div>
+        <script>
+        //first we need to retrieve form fields
+        var formusr = document.querySelector('#regform')
+        var usr = document.querySelector('#usrnamecreate')
+        var pass = document.querySelector('#passwrdcreate')
+        var cpas = document.querySelector('#passwrdconfirm')
+        var errmessage = document.querySelector('#errorMessage')
+
+        //first we need to validate username by connecting to backend with ajax
+        usr.addEventListener('input', function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/usercheck', true);
+            xhr.addEventListener('readystatechange', function(){
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                var item = xhr.responseText;
+                if (item === 'False') {
+                    errmessage.textContent = 'Username taken - Try another name!';
+                    document.querySelector('#regbutton').disabled = true;
+                } else {
+                    nameErr.textContent = '';
+                    document.querySelector('#regbutton').disabled = false;
+                }
+            }
+        });
+        xhr.send(usr.value);
+
+        });
+	</script>
+    </body>
+</html>

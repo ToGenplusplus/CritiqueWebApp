@@ -1,0 +1,45 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+Myreviews
+{% endblock %}
+
+{% block user %}
+
+{{ usr }}
+
+{% endblock %}
+
+{% block body %}
+<div class="myreviewsdisplayblock">
+    <h1> My Reviews : </h1>
+    <div id = "myreviewsresults" style=" width: 650px; height:500px; overflow: auto; margin-top: 20px; margin-left: 10px;">
+        {% for review in reviewlist %}
+            <div class = " rev myreviews" style="background-color: #ffffff; border-top: 0.5px solid #3260a8; word-wrap: break-word;">
+                <br>
+
+                <label> <strong> Book:</strong>{{ review.title }} by {{ review.author}}.</label><br>
+                <label> <strong> Rating: </strong> {{ review.rating }}</label><br>
+                <p id ="revopinion" class = "reviewtext" > {{ review.text if review.text != None else ' '}}</p>
+                <a class = "editlinks" href="{{ url_for('reviewEdit', book_id = review.isbn, user_id = usr) }}"> Edit</a>
+                <button type="button" class=" revdel btn btn-link" onclick="displayArea('reviewDelete')" style="float: right;">Delete review</button>
+                <div id="reviewDelete" style = "display: none;">
+                    <h6>Are you sure you want to delete this review?</h6><a class="delete" href="{{ url_for('reviewDelete', book_id = review.isbn, user_id = usr) }}"> Delete </a>
+                </div>
+            </div>           
+        {% else %}
+            <div>
+                <h2> You haven't done a review yet !! </h2>
+                <br>
+                <br>
+                <h6>Enjoyed a book? Let others know by leaving a review.</h6>
+                <br>
+                <div id="reviewbooksearch">
+                    <a class="btn btn-primary" href="{{ url_for('booksearch') }}" role="button" id="reviewsearchbook">Find book</a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "logreglayout.html" %}
+
+{% block title %}
+Login error 
+{% endblock %}
+
+{% block body %}
+<div id = "loginfailblock" class ="displayblock">
+
+    <h1 class="failheadline" > You do not have an account ! </h1>
+    <h6 class = "failsubline"> Create an account <a href = "{{ url_for('Register') }}"> here </a></h6>
+
+</div> 
+{% endblock %}

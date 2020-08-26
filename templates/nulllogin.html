@@ -1,0 +1,13 @@
+{% extends "logreglayout.html" %}
+
+{% block title %}
+Login error 
+{% endblock %}
+
+{% block body %}
+<div id = "loginwrongpassword" class ="displayblock">
+
+    <h1 class="failheadline"> Incorrect password ! </h1>
+    <h6 class = "failsubline"><a href = "{{ url_for('Login') }}"> Try again </a></h6>
+</div> 
+{% endblock %}

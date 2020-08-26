@@ -1,0 +1,18 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+UpdateSuccesfull 
+{% endblock %}
+
+{% block user %}
+{{ username }}
+{% endblock %}
+
+{% block body %}
+<div id =" updatedisplayblock" class ="displayblock">
+
+    <h3 id="successupdateheadline" class="aheadline"> Your review has been updated.</h1>
+    <h6 id = "successregister" class = "asubline">   <a href= "{{ url_for('usereviews') }}"> view reviews </a></h6>
+
+</div> 
+{% endblock %}

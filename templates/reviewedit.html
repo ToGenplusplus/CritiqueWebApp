@@ -1,0 +1,40 @@
+{% extends "mainpagelayout.html" %}
+
+{% block title %}
+Edit
+{% endblock %}
+
+{% block user %}
+{{ usr}}
+{% endblock %}
+
+{% block body %}
+<div id="revieweditblock">
+    <a href="{{url_for('bookinformation', book_id= bookinfo) }}" style="float: right;"> <strong> cancel </strong> </a>
+    <div id = "reviewinfo">
+        <label> <strong>Your Rating : </strong>  {{ rating.rating }} </label>
+    </div>
+
+    <div id="revieweditsubmit">
+        <form action="{{url_for('reviewUpdate', book_id= bookinfo, user_id=usr) }}" method ="POST">  
+            <div class="form-group">
+                <label >Rating: </label>
+                <select class="form-control" name="updatereviewrating" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="reviewupdatetextbox"> Opinion? (optional) :</label>
+                <textarea name = "updatetextsubmitted" class="form-control" id="reviewupdatetextbox" rows="3" maxlength="500" onKeyPress="return taLimit(this)" onKeyUp="return taCount(this,'editboxcounter')">{{rating.text}}</textarea>
+                <label>500 character limit. <B>(<SPAN id=editboxcounter>500</SPAN>)</B></label>
+              </div>
+            <button type="submit" class="btn btn-primary submitreview">Update</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
