@@ -64,4 +64,7 @@ function displayArea(value)
       }
 
   }
+
+
+
   

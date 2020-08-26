@@ -20,11 +20,7 @@
                 </ul>
             </div>
         </nav>
-        <!--
-        <div class="topnav" style= "background-color: #ffffff; overflow: hidden; position: fixed; border-radius: 3px; margin:5px">
-            <a href="{{ url_for('Login') }}" style="color: #3260a8; border: 1px solid #3260a8; padding: 8px; border-radius: 15px; text-align: right; float: right;">Sign in</a> 
-        </div>
-        -->
+        
         <div id="titleblock" style=" background-color: #ffffff; position: fixed; width: 650px; height: 500px; top: 15%; left: 0%;">
 
             <h1 id="hometitle" class = "title" style=" font-size:120px; padding: 10px; margin-top: 20%; margin-left: 10%;"> Critique </h1>
@@ -53,32 +49,33 @@
               </form>
           </div>
         <script>
-        //first we need to retrieve form fields
-        var formusr = document.querySelector('#regform')
-        var usr = document.querySelector('#usrnamecreate')
-        var pass = document.querySelector('#passwrdcreate')
-        var cpas = document.querySelector('#passwrdconfirm')
-        var errmessage = document.querySelector('#errorMessage')
+             //first we need to retrieve form fields
+            var formusr = document.querySelector('#regform')
+            var usr = document.querySelector('#usrnamecreate')
+            var pass = document.querySelector('#passwrdcreate')
+            var cpas = document.querySelector('#passwrdconfirm')
+            var errmessage = document.querySelector('#errorMessage')
 
-        //first we need to validate username by connecting to backend with ajax
-        usr.addEventListener('input', function () {
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/usercheck', true);
-            xhr.addEventListener('readystatechange', function(){
-            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
-                var item = xhr.responseText;
-                if (item === 'False') {
-                    errmessage.textContent = 'Username taken - Try another name!';
-                    document.querySelector('#regbutton').disabled = true;
-                } else {
-                    nameErr.textContent = '';
-                    document.querySelector('#regbutton').disabled = false;
+            //first we need to validate username by connecting to backend with ajax
+            usr.addEventListener('input', function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/usercheck', true);
+                xhr.addEventListener('readystatechange', function(){
+                if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                    var item = xhr.responseText;
+                    if (item === 'False') {
+                        errmessage.innerHTML = 'Username taken - Try another name!';
+                        errmessage.style = "color: red;"
+                        document.querySelector('#regbutton').disabled = true;
+                    } else {
+                        nameErr.textContent = '';
+                        document.querySelector('#regbutton').disabled = false;
+                    }
                 }
-            }
-        });
-        xhr.send(usr.value);
+            });
+            xhr.send(usr.value);
 
-        });
-	</script>
+            });
+	    </script>
     </body>
 </html>
