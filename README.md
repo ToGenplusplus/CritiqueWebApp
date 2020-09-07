@@ -4,8 +4,8 @@ Leave a review in Critique and discuss with your fellow book lovers.
 
 ## About The Project
 I created this web app as a side project to develop my skills in web development 
-with python. I learned how to process user input, login and authentication, sessions 
-retrieving data from an external API and creating and database management.
+with python. I learned how to process user input, login and authentication, sessions, 
+retrieving data from an external API and database management.
 
 ## Technologies Used
 
@@ -13,6 +13,7 @@ retrieving data from an external API and creating and database management.
 * [Bootstrap](https://getbootstrap.com/)
 * [Postgres](https://www.postgresql.org/)
 * [Heroku](https://www.heroku.com/)
+
 External API:
 * [Goodreads](https://www.goodreads.com/)
 
