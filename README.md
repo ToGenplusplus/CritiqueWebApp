@@ -18,6 +18,23 @@ External API:
 * [Goodreads](https://www.goodreads.com/)
 
 ## App Screenshots
+<br>
 <p align="center"> 
-	<img src="homepage.png" alt="home">
-</p>
+	<img src="images/homepage.png" alt="home">
+<br>
+    <img src="images/loginPage.png" alt="sign in page">
+<br>
+    <img src="images/reviewDisplayPage.png" alt="reviews page">
+<br>
+    <img src="images/searchPage.png" alt="search page">
+<br>
+    <img src="images/searchResult.png" alt="search results page">
+<br>
+    <img src="images/userReviews.png" alt="user reviews">
+<br>
+</p>    
+    
+    
+    
+
+    
