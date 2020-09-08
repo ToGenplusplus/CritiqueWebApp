@@ -17,5 +17,7 @@ retrieving data from an external API and database management.
 External API:
 * [Goodreads](https://www.goodreads.com/)
 
-
-
+## App Screenshots
+<p align="center"> 
+	<img src="homepage.png" alt="home">
+</p>
