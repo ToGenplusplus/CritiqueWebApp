@@ -24,11 +24,11 @@ External API:
 <br>
     <img src="images/loginPage.png" alt="sign in page">
 <br>
-    <img src="images/reviewDisplayPage.png" alt="reviews page">
+    <img src="images/searchPage.png" alt="reviews page">
 <br>
-    <img src="images/searchPage.png" alt="search page">
+    <img src="images/searchResult.png" alt="search page">
 <br>
-    <img src="images/searchResult.png" alt="search results page">
+    <img src="images/reviewDisplayPage.png" alt="search results page">
 <br>
     <img src="images/userReviews.png" alt="user reviews">
 <br>
